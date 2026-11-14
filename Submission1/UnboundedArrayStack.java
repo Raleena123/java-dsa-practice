@@ -8,11 +8,17 @@ public class UnboundedArrayStack {
     // Add an element
     public void push(int value) {
 
-        // Double array size when full
+        // Increase array size if full
         if (size == data.length) {
-            data = Arrays.copyOf(data, data.length * 2);
-        }
+            int[] newData = new int[data.length * 2];
 
+            for (int i = 0; i < size; i++) {
+                newData[i] = data[i];
+            }
+
+            data = newData;
+        }
+        
         data[size] = value;
         size++;
     }
